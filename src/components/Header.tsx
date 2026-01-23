@@ -7,6 +7,7 @@ import { Protect, SignInButton, useAuth, UserButton } from "@clerk/nextjs";
 import { Crown, Home, Mic, Zap } from "lucide-react";
 import { Button } from "./ui/button";
 import { Badge } from "./ui/badge";
+import DashboardNav from "./DashboardNav";
 
 export function Header() {
   const { isSignedIn } = useAuth();
@@ -36,13 +37,6 @@ export function Header() {
                     : "p-2 rounded-xl bg-white/95 group-hover:bg-white group-hover:scale-115 group-hover:shadow-xl transition-all duration-300"
                 }`}
               >
-                <Mic
-                  className={
-                    isDashboard
-                      ? "h-6 w-6 text-emerald-700 group-hover:rotate-12 transition-transform duration-300"
-                      : "h-6 w-6 text-gray-700 group-hover:rotate-12 transition-transform duration-300"
-                  }
-                />
                 <Image
                   src="/assets/airtime-icon-clean.svg"
                   alt="Airtime"
@@ -50,23 +44,23 @@ export function Header() {
                   height={40}
                   className="h-10 w-10 flex-shrink-0"
                 />
+                <span className="text-xl font-bold text-gray-800 tracking-tight">
+                  Airtime
+                </span>
+                <Mic
+                  className={
+                    isDashboard
+                      ? "h-6 w-6 text-emerald-700 group-hover:rotate-12 transition-transform duration-300"
+                      : "h-6 w-6 text-gray-700 group-hover:rotate-12 transition-transform duration-300"
+                  }
+                />
               </div>
-
-              <span
-                className={
-                  isDashboard
-                    ? "text-xl font-bold text-white tracking-tight"
-                    : "text-xl font-bold text-gray-800 tracking-tight"
-                }
-              >
-                Airtime
-              </span>
             </Link>
 
             {/* Dashboard Navigation */}
             {isDashboard && (
               <div className="flex items-center pl-3 sm:pl-5">
-                {/* TODO: render <DashboardNav/> when implemented */}
+                <DashboardNav />
               </div>
             )}
           </div>
@@ -181,3 +175,5 @@ export function Header() {
     </header>
   );
 }
+
+export default Header;
