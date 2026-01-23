@@ -1,0 +1,378 @@
+On branch working-on-backend+shadcn
+Your branch is based on 'origin/working-on-backend+shadcn', but the upstream is gone.
+  (use "git branch --unset-upstream" to fixup)
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+        new file:   src/components/Header.tsx
+        new file:   src/components/Logo.tsx
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   .idea/workspace.xml
+        modified:   package.json
+        modified:   pnpm-lock.yaml
+        modified:   src/app/globals.css
+        modified:   src/app/layout.tsx
+        modified:   src/app/page.tsx
+        modified:   src/components/Header.tsx
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        biome.json
+        public/assets/
+        src/components/PlanProtect.tsx
+        src/hooks/use-plan.ts
+warning: in the working copy of '.idea/workspace.xml', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'package.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'pnpm-lock.yaml', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/app/globals.css', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/components/Header.tsx', LF will be replaced by CRLF the next time Git touches it
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+index 2c87d81..d465f06 100644
+--- a/.idea/workspace.xml
++++ b/.idea/workspace.xml
+@@ -5,11 +5,13 @@
+   </component>
+   <component name="ChangeListManager">
+     <list default="true" id="dc85ce12-4337-486a-b3cc-7aaefa84ad40" name="Changes" comment="">
++      <change afterPath="$PROJECT_DIR$/src/components/Header.tsx" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/src/components/Logo.tsx" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/convex/auth.config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/convex/auth.config.ts" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/pnpm-lock.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pnpm-lock.yaml" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/src/app/globals.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/globals.css" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/app/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/layout.tsx" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/src/app/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/page.tsx" afterDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+@@ -44,6 +46,10 @@
+             <RecentBranchesForRepo>
+               <option name="branches">
+                 <list>
++                  <RecentBranch>
++                    <option name="branchName" value="working-on-backend+shadcn" />
++                    <option name="lastUsedInstant" value="1768845652" />
++                  </RecentBranch>
+                   <RecentBranch>
+                     <option name="branchName" value="main" />
+                     <option name="lastUsedInstant" value="1768805995" />
+@@ -96,18 +102,19 @@
+     "dart.analysis.tool.window.visible": "false",
+     "ejs.close.delimiter": "%>",
+     "ejs.open.delimiter": "<%",
+-    "git-widget-placeholder": "main",
++    "git-widget-placeholder": "working-on-backend+shadcn",
+     "ignore.virus.scanning.warn.message": "true",
+     "js.debugger.nextJs.config.created.client": "true",
+     "js.debugger.nextJs.config.created.server": "true",
+     "junie.onboarding.icon.badge.shown": "true",
++    "last_opened_file_path": "C:/Users/oferc/WebstormProjects/Airtime/public/assets",
+     "node.js.detected.package.eslint": "true",
+     "node.js.detected.package.tslint": "true",
+     "node.js.selected.package.eslint": "(autodetect)",
+     "node.js.selected.package.tslint": "(autodetect)",
+     "nodejs_package_manager_path": "npm",
+     "prettierjs.PrettierConfiguration.Package": "C:\\Users\\oferc\\WebstormProjects\\Airtime\\node_modules\\prettier",
+-    "settings.editor.selected.configurable": "Settings.JavaScript.Templates",
++    "settings.editor.selected.configurable": "preferences.pluginManager",
+     "to.speed.mode.migration.done": "true",
+     "ts.external.directory.path": "C:\\Users\\oferc\\WebstormProjects\\Airtime\\node_modules\\typescript\\lib",
+     "vue.rearranger.settings.migration": "true"
+@@ -124,12 +131,15 @@
+   </component>
+   <component name="RecapSpentCounter">
+     <option name="endsOfQuotaMs" value="1769109237130" />
+-    <option name="spentUsd" value="0.06657555" />
++    <option name="spentUsd" value="0.09275435" />
+   </component>
+   <component name="RecapUselessUpdatesCounter">
+-    <option name="suspendCountdown" value="2" />
++    <option name="suspendCountdown" value="0" />
+   </component>
+   <component name="RecentsManager">
++    <key name="CopyFile.RECENT_KEYS">
++      <recent name="C:\Users\oferc\WebstormProjects\Airtime\public\assets" />
++    </key>
+     <key name="MoveFile.RECENT_KEYS">
+       <recent name="C:\Users\oferc\WebstormProjects\Airtime\src" />
+     </key>
+@@ -165,7 +175,7 @@
+       <updated>1768633023526</updated>
+       <workItem from="1768633031355" duration="164000" />
+       <workItem from="1768806824634" duration="636000" />
+-      <workItem from="1768823889015" duration="8024000" />
++      <workItem from="1768823889015" duration="22469000" />
+     </task>
+     <servers />
+   </component>
+diff --git a/package.json b/package.json
+index ee3aa2b..e1b7692 100644
+--- a/package.json
++++ b/package.json
+@@ -61,6 +61,7 @@
+     "zod": "^4.3.5"
+   },
+   "devDependencies": {
++    "@biomejs/biome": "^2.3.11",
+     "@tailwindcss/postcss": "^4",
+     "@types/node": "^20",
+     "@types/react": "^19",
+diff --git a/pnpm-lock.yaml b/pnpm-lock.yaml
+index 71da712..7201683 100644
+--- a/pnpm-lock.yaml
++++ b/pnpm-lock.yaml
+@@ -159,6 +159,9 @@ importers:
+         specifier: ^4.3.5
+         version: 4.3.5
+     devDependencies:
++      '@biomejs/biome':
++        specifier: ^2.3.11
++        version: 2.3.11
+       '@tailwindcss/postcss':
+         specifier: ^4
+         version: 4.1.18
+@@ -264,6 +267,59 @@ packages:
+     resolution: {integrity: sha512-0ZrskXVEHSWIqZM/sQZ4EV3jZJXRkio/WCxaqKZP1g//CEWEPSfeZFcms4XeKBCHU0ZKnIkdJeU/kF+eRp5lBg==}
+     engines: {node: '>=6.9.0'}
+
++  '@biomejs/biome@2.3.11':
++    resolution: {integrity: sha512-/zt+6qazBWguPG6+eWmiELqO+9jRsMZ/DBU3lfuU2ngtIQYzymocHhKiZRyrbra4aCOoyTg/BmY+6WH5mv9xmQ==}
++    engines: {node: '>=14.21.3'}
++    hasBin: true
++
++  '@biomejs/cli-darwin-arm64@2.3.11':
++    resolution: {integrity: sha512-/uXXkBcPKVQY7rc9Ys2CrlirBJYbpESEDme7RKiBD6MmqR2w3j0+ZZXRIL2xiaNPsIMMNhP1YnA+jRRxoOAFrA==}
++    engines: {node: '>=14.21.3'}
++    cpu: [arm64]
++    os: [darwin]
++
++  '@biomejs/cli-darwin-x64@2.3.11':
++    resolution: {integrity: sha512-fh7nnvbweDPm2xEmFjfmq7zSUiox88plgdHF9OIW4i99WnXrAC3o2P3ag9judoUMv8FCSUnlwJCM1B64nO5Fbg==}
++    engines: {node: '>=14.21.3'}
++    cpu: [x64]
++    os: [darwin]
++
++  '@biomejs/cli-linux-arm64-musl@2.3.11':
++    resolution: {integrity: sha512-XPSQ+XIPZMLaZ6zveQdwNjbX+QdROEd1zPgMwD47zvHV+tCGB88VH+aynyGxAHdzL+Tm/+DtKST5SECs4iwCLg==}
++    engines: {node: '>=14.21.3'}
++    cpu: [arm64]
++    os: [linux]
++
++  '@biomejs/cli-linux-arm64@2.3.11':
++    resolution: {integrity: sha512-l4xkGa9E7Uc0/05qU2lMYfN1H+fzzkHgaJoy98wO+b/7Gl78srbCRRgwYSW+BTLixTBrM6Ede5NSBwt7rd/i6g==}
++    engines: {node: '>=14.21.3'}
++    cpu: [arm64]
++    os: [linux]
++
++  '@biomejs/cli-linux-x64-musl@2.3.11':
++    resolution: {integrity: sha512-vU7a8wLs5C9yJ4CB8a44r12aXYb8yYgBn+WeyzbMjaCMklzCv1oXr8x+VEyWodgJt9bDmhiaW/I0RHbn7rsNmw==}
++    engines: {node: '>=14.21.3'}
++    cpu: [x64]
++    os: [linux]
++
++  '@biomejs/cli-linux-x64@2.3.11':
++    resolution: {integrity: sha512-/1s9V/H3cSe0r0Mv/Z8JryF5x9ywRxywomqZVLHAoa/uN0eY7F8gEngWKNS5vbbN/BsfpCG5yeBT5ENh50Frxg==}
++    engines: {node: '>=14.21.3'}
++    cpu: [x64]
++    os: [linux]
++
++  '@biomejs/cli-win32-arm64@2.3.11':
++    resolution: {integrity: sha512-PZQ6ElCOnkYapSsysiTy0+fYX+agXPlWugh6+eQ6uPKI3vKAqNp6TnMhoM3oY2NltSB89hz59o8xIfOdyhi9Iw==}
++    engines: {node: '>=14.21.3'}
++    cpu: [arm64]
++    os: [win32]
++
++  '@biomejs/cli-win32-x64@2.3.11':
++    resolution: {integrity: sha512-43VrG813EW+b5+YbDbz31uUsheX+qFKCpXeY9kfdAx+ww3naKxeVkTD9zLIWxUPfJquANMHrmW3wbe/037G0Qg==}
++    engines: {node: '>=14.21.3'}
++    cpu: [x64]
++    os: [win32]
++
+   '@bufbuild/protobuf@2.10.2':
+     resolution: {integrity: sha512-uFsRXwIGyu+r6AMdz+XijIIZJYpoWeYzILt5yZ2d3mCjQrWUTVpVD9WL/jZAbvp+Ed04rOhrsk7FiTcEDseB5A==}
+
+@@ -4152,6 +4208,41 @@ snapshots:
+       '@babel/helper-string-parser': 7.27.1
+       '@babel/helper-validator-identifier': 7.28.5
+
++  '@biomejs/biome@2.3.11':
++    optionalDependencies:
++      '@biomejs/cli-darwin-arm64': 2.3.11
++      '@biomejs/cli-darwin-x64': 2.3.11
++      '@biomejs/cli-linux-arm64': 2.3.11
++      '@biomejs/cli-linux-arm64-musl': 2.3.11
++      '@biomejs/cli-linux-x64': 2.3.11
++      '@biomejs/cli-linux-x64-musl': 2.3.11
++      '@biomejs/cli-win32-arm64': 2.3.11
++      '@biomejs/cli-win32-x64': 2.3.11
++
++  '@biomejs/cli-darwin-arm64@2.3.11':
++    optional: true
++
++  '@biomejs/cli-darwin-x64@2.3.11':
++    optional: true
++
++  '@biomejs/cli-linux-arm64-musl@2.3.11':
++    optional: true
++
++  '@biomejs/cli-linux-arm64@2.3.11':
++    optional: true
++
++  '@biomejs/cli-linux-x64-musl@2.3.11':
++    optional: true
++
++  '@biomejs/cli-linux-x64@2.3.11':
++    optional: true
++
++  '@biomejs/cli-win32-arm64@2.3.11':
++    optional: true
++
++  '@biomejs/cli-win32-x64@2.3.11':
++    optional: true
++
+   '@bufbuild/protobuf@2.10.2': {}
+
+   '@clerk/backend@2.29.3(react-dom@19.2.3(react@19.2.3))(react@19.2.3)':
+diff --git a/src/app/globals.css b/src/app/globals.css
+index e38096d..924d32a 100644
+--- a/src/app/globals.css
++++ b/src/app/globals.css
+@@ -124,3 +124,17 @@
+     @apply bg-background text-foreground;
+   }
+ }
++
++@utility glass-nav {
++  background-color: color-mix(in srgb, var(--background), transparent 20%);
++  backdrop-filter: blur(12px);
++}
++
++@utility gradient-emerald {
++  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
++  color: white;
++}
++
++@utility shadow-xxl {
++  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
++}
+diff --git a/src/app/layout.tsx b/src/app/layout.tsx
+index 300eb71..aabf08a 100644
+--- a/src/app/layout.tsx
++++ b/src/app/layout.tsx
+@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
+ import "./globals.css";
+ import { ClerkProvider } from "@clerk/nextjs";
+ import ConvexClientProvider from "@/components/ConvexClientProvider";
++import { Header } from "@/components/Header";
+
+ const geistSans = Geist({
+   variable: "--font-geist-sans",
+@@ -29,7 +30,10 @@ export default function RootLayout({
+             <ConvexClientProvider>
+                 <html lang="en">
+                     <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+-                        {children}
++                        <Header />
++                        <main className="min-h-screen">
++                            { children }
++                        </main>
+                     </body>
+                 </html>
+             </ConvexClientProvider>
+diff --git a/src/app/page.tsx b/src/app/page.tsx
+index 42c259f..330275c 100644
+--- a/src/app/page.tsx
++++ b/src/app/page.tsx
+@@ -2,11 +2,21 @@ import {Button} from "@/components/ui/button";
+
+ export default function Home() {
+   return (
+-      <div>
+-          <h1 className="text-3xl font-bold underline">Hello World</h1>
+-          <Button className={'flex bg-background transition-all text-black'}>
+-              Hello World
+-          </Button>
++    <div className="flex flex-col items-center justify-center min-h-[80vh] text-center px-4">
++        <h1 className="text-6xl font-extrabold tracking-tighter sm:text-7xl md:text-8xl lg:text-9xl">
++          AIRTIME
++        </h1>
++        <p className="mt-8 text-xl text-gray-500 max-w-[600px] leading-relaxed">
++          The next generation AI podcast platform. Stream, create, and discover content like never before with deep intelligence.
++        </p>
++        <div className="mt-12 flex flex-col sm:flex-row gap-4">
++            <button className="bg-black text-white px-10 py-4 rounded-full font-semibold hover:bg-gray-800 transition-all transform hover:scale-105">
++                Get Started Free
++            </button>
++            <button className="border border-gray-200 px-10 py-4 rounded-full font-semibold hover:bg-gray-50 transition-all">
++                Explore Episodes
++            </button>
++        </div>
+     </div>
+   );
+-}
++};
+diff --git a/src/components/Header.tsx b/src/components/Header.tsx
+index e69de29..9196587 100644
+--- a/src/components/Header.tsx
++++ b/src/components/Header.tsx
+@@ -0,0 +1,60 @@
++'use client';
++
++import {Button} from "@/components/ui/button";
++import {SignInButton,UserButton,useAuth,Protect} from "@clerk/clerk-react";
++import {Home,Sparkles,Zap,Crown} from 'lucide-react';
++import Link from 'next/link';
++import { usePathname } from "next/navigation";
++//import {DashboardNav} from '@/components/dashboard-nav';
++import { Badge } from "@/components/ui/badge";
++import { PlanProtect } from "./PlanProtect";
++import { usePlan } from "@/hooks/use-plan";
++import Image from "next/image";
++import airtimeLogo from "@/public/assets/airtime-logo.svg";
++
++export function Header() {
++    const {isSignedIn}=useAuth();
++    const pathname=usePathname();
++    const isDashboard=pathname?.startsWith('/dashboard');
++    const showsDashboardNav=isDashboard;
++    return (
++        <header className=
++            {
++            isDashboard
++                ? 'gradient-emerald sticky top-0 transition-all shadow-xxl ' +
++                'backdrop-blur-sm z-50 border-b border-white/10'
++                : 'glass-nav sticky top-0 transition-all z-50 backdrop-blur-md ' +
++                'border-b border-gray-200/50 shadow-sm'
++        }
++        >
++            <div className='container mx-auto px-5 lg:px-8'>
++                <div className="flex items-center justify-between h-24">
++                    <div className={'flex items-center gap-4 lg:gap-9'}>
++                        <Link href='/' className='flex items-center gap-5 hover:opacity-80 transition-all duration-400 group'>
++                            <Image src='/assets/Air.svg' alt='Airtime' width={200} height={60} className='h-14 w-auto object-contain' />
++                        </Link>
++                    </div>
++
++                    <div className="flex items-center gap-4">
++                        {!isSignedIn ? (
++                            <SignInButton mode='modal'>
++                                <Button variant='ghost' className="font-semibold text-base hover:bg-black/5 rounded-full px-6">
++                                    Sign In
++                                </Button>
++                            </SignInButton>
++                        ) : (
++                            <div className="flex items-center gap-4">
++                                <Link href="/dashboard" className="text-sm font-medium text-gray-600 hover:text-black transition-colors">
++                                    Dashboard
++                                </Link>
++                                <UserButton afterSignOutUrl="/" />
++                            </div>
++                        )}
++                    </div>
++                </div>
++                </div>
++
++         </header>
++    )
++}
++
