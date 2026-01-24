@@ -1,3 +1,5 @@
+"use client";
+
 import {PricingTable} from "@clerk/clerk-react";
 import {Loader2} from "lucide-react";
 

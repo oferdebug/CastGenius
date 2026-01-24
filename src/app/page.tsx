@@ -1,8 +1,8 @@
 
 import Header from "@/components/Header";
-import FeaturesSection from "@/components/Home/Features-Section-";
-import { HeroSection } from "@/components/Home/Hero-Section";
-import PricingSection from "@/components/Home/Pricing-Section";
+import FeaturesSection from "@/components/Home/FeaturesSection";
+import { HeroSection } from "@/components/Home/HeroSection";
+import PricingSection from "@/components/Home/PricingSection";
 
 export default function Home() {
   return (
