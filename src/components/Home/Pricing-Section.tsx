@@ -8,7 +8,7 @@ interface PricingSectionProps {
 
     export default function PricingSection({ compact }: PricingSectionProps) {
         return (
-            <section className={'relative py-26 md:py-34 overflow-hidden'}>
+            <section className={'relative py-24 md:py-32 overflow-hidden'}>
                 <div className={'max-w-7xl mx-auto'}>
                     {/* Header */}
                     <div className={'text-center mb-20'}>

@@ -6,12 +6,12 @@ import { Button } from "../ui/button";
 
 export async function HeroSection() {
   const { userId } = await auth();
-  const isSingedIn = !!userId;
+  const isSignedIn = !!userId;
   return (
     <section
       className={"relative overflow-hidden mesh-background min-h-screen"}
     >
-      <div className={"container mx-auto px-5 py-26 md:pb-26 lgmd:pt-25"}>
+      <div className={"container mx-auto px-5 py-24 md:pb-24 lg:pt-24"}>
         <div className={"max-w-5xl mx-auto"}>
           <div className={"text-center mb-20 animate-float"}>
             <div
@@ -48,7 +48,7 @@ export async function HeroSection() {
             </p>
           </div>
 
-          {isSingedIn ? (
+          {isSignedIn ? (
             <div className={"space-y-6"}>
               <div className={"glass-card-strong rounded-2xl p-9 hover-lift"}>
                 {/*<PodcastUploader />*/}
