@@ -21,26 +21,25 @@ export async function HeroSection() {
             >
               <span
                 className={
-                  "text-sm font-semibold bg-gradient-to-r from-emerald-600 to-emerald-500 bg-clip-text text-transparent"
+                  "text-sm font-semibold bg-gradient-to-r from-brand-600 to-brand-500 bg-clip-text text-transparent"
                 }
               >
                 AI-Powered Podcast Transcription & Search
               </span>
             </div>
 
-            <h1
-              className={
-                "text-6xl md:text-7xl lg:text-8xl font-extrabold text-white leading-tight"
-              }
-            >
-              <span className={"gradient-emerald-text"}>Transform</span> Your
-              <br />
-              Podcasts Into AI Content Machine
-            </h1>
+              <h1 className="text-6xl md:text-7xl lg:text-8xl font-extrabold leading-tight">
+                  <span className="gradient-brand-text">Transform</span>
+                  <span className="text-slate-950"> Your</span>
+                  <br />
+                  <span className="text-slate-950">Podcasts Into AI</span>
+                  <br />
+                  <span className="gradient-brand-text">Content Machine</span>
+              </h1>
 
             <p
               className={
-                "text-xl md:text-2xl text-gray-800 mb-12 max-w-3xl mx-auto leading-relaxed"
+                "text-xl md:text-2xl text-slate-800 mb-12 max-w-3xl mx-auto leading-relaxed"
               }
             >
               Upload your audio and get AI - generated transcripts, summaries,
@@ -75,7 +74,7 @@ export async function HeroSection() {
                 <Button
                   size={"lg"}
                   className={
-                    "gradient-emerald text-white hover-glow text-lg px-9 py-8 rounded-xl shadow-lg"
+                    "gradient-brand text-white hover-glow text-lg px-9 py-8 rounded-xl shadow-lg"
                   }
                 >
                   Get Started Today
@@ -101,11 +100,11 @@ export async function HeroSection() {
       {/* Gradient Orbs */}
       <div
         className={
-          "absolute top-0 right-0 w-96 h-96 bg-emerald-300 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-float"
+          "absolute top-0 right-0 w-96 h-96 bg-brand-300/30 rounded-full mix-blend-multiply filter blur-3xl animate-float"
         }
       ></div>
       <div
-        className="absolute bottom-0 left-0 w-96 h-96 bg-teal-300 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-float"
+        className="absolute bottom-0 left-0 w-96 h-96 bg-brand-400/30 rounded-full mix-blend-multiply filter blur-3xl animate-float"
         style={{ animationDelay: "1s" }}
       />
     </section>
