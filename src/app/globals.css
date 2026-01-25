@@ -143,6 +143,11 @@
     rgba(236, 72, 153, 0.1) 0%,
     rgba(139, 92, 246, 0.2) 100%
   );
+  --gradient-clerk: linear-gradient(
+    135deg,
+    rgb(236, 72, 153),
+    rgb(139, 92, 246)
+  );
 }
 
 @layer base {
@@ -173,24 +178,16 @@
 }
 
 /* Force white text in pricing table header */
-.cl-pricingTableCardHeader,
-.cl-pricingTableCardHeader * {
+.clerk-pricing-theme .cl-pricingTableCardHeader,
+.clerk-pricing-theme .cl-pricingTableCardHeader * {
   /* biome-ignore lint/complexity/noImportantStyles: Required to override Clerk internal styles */
   color: white !important;
 }
 
-/* Force style on See all features */
-.cl-pricingTableCard span[class*="seeAll"],
-.cl-pricingTableCard a[class*="seeAll"],
-.cl-pricingTableCard div[class*="seeAll"],
-.cl-pricingTableCard [class*="SeeAll"],
-.cl-pricingTableCard [class*="features"] {
+/* Force style on See all features button */
+.clerk-pricing-theme .cl-pricingTableCardSeeAllButton {
   /* biome-ignore lint/complexity/noImportantStyles: Required to override Clerk internal styles */
-  background: linear-gradient(
-    135deg,
-    rgb(236, 72, 153),
-    rgb(139, 92, 246)
-  ) !important;
+  background: var(--gradient-clerk) !important;
   /* biome-ignore lint/complexity/noImportantStyles: Required to override Clerk internal styles */
   color: white !important;
   /* biome-ignore lint/complexity/noImportantStyles: Required to override Clerk internal styles */
