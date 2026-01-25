@@ -59,11 +59,11 @@ export function FeaturesSection() {
         <section className='container mx-auto px-6 py-26 md:py-34'>
             <div className={'max-w-7xl mx-auto'}>
                 <div className={'text-center mb-18'}>
-                    <h2 className={'text-5xl md:text-6xl font-bold mb-4'}>
+                    <h2 className={'text-5xl md:text-6xl font-bold mb-4 text-slate-950'}>
                         Every Feature You Need in {' '}
-                        <span className={'gradient-emerald-text'}>One Platform</span> {' '}
+                        <span className={'gradient-brand-text'}>One Platform</span> {' '}
                     </h2>
-                    <p className={'text-xl text-gray-800 max-w-2xl mx-auto'}>
+                    <p className={'text-xl text-slate-700 max-w-2xl mx-auto'}>
                         Power up your podcast with AI-driven transcription, search, and social media automation.
                     </p>
                 </div>
@@ -76,13 +76,13 @@ export function FeaturesSection() {
                                 className={'glass-card rounded-2xl hover-lift p-8 group'}
                                 style={{animationDelay: `${index * 100}ms`}}
                             >
-                                <div className={'rounded-2xl gradient-emerald p-4 w-fit mb-6 group-hover:animate-pulse-emerald transition-all'}>
+                                <div className={'rounded-2xl gradient-brand p-4 w-fit mb-6 group-hover:animate-pulse-brand transition-all'}>
                                     <Icon className={'h-8 w-8 text-white'} />
                                 </div>
-                                <h3 className={'text-2xl font-bold mb-3 group-hover:text-emerald-700 transition-colors'}>
+                                <h3 className={'text-2xl font-bold mb-3 text-slate-950 group-hover:text-brand-500 transition-colors'}>
                                     {feature.title}
                                 </h3>
-                                <p className={'text-gray-700 leading-relaxed'}>
+                                <p className={'text-slate-700 leading-relaxed'}>
                                     {feature.description}
                                 </p>
                             </div>

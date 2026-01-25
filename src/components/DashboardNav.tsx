@@ -22,8 +22,8 @@ export default function DashboardNav() {
                     className={ cn(
                         'gap-4 transition-all duration-300 font-medium',
                         isActive( '/dashboard/projects' )
-                            ? 'bg-white/10 text-emerald-600 hover:bg-white hover:scale-105 shadow-lg border border-white/20'
-                            : 'text-white hover:bg-white/20 hover:scale-105'
+                            ? 'bg-brand-50/10 text-white hover:bg-brand-50/20 hover:scale-105 shadow-lg border border-brand-50/20'
+                            : 'text-white/80 hover:bg-brand-50/10 hover:scale-105'
                     ) }
                 >
                     <FolderOpen className={ 'h-4 w-4' } />
@@ -37,8 +37,8 @@ export default function DashboardNav() {
                     className={ cn(
                         'gap-4 transition-all duration-300 font-medium',
                         isActive( '/dashboard/uploads' )
-                            ? 'bg-white/10 text-emerald-600 hover:bg-white hover:scale-105 shadow-lg border border-white/20'
-                            : 'text-white hover:bg-white/30 hover:scale-110',
+                            ? 'bg-brand-50/10 text-white hover:bg-brand-50/20 hover:scale-105 shadow-lg border border-brand-50/20'
+                            : 'text-white/80 hover:bg-brand-50/20 hover:scale-110',
                     ) }
                 >
                     <Upload className={ 'h-4 w-4' } />

@@ -1,16 +1,15 @@
 "use client";
 
-// biome-ignore assist/source/organizeImports: <explanation>
+// biome-ignore assist/source/organizeImports: Custom organization preferred for imports
 import Link from "next/link";
 import Image from "next/image";
 import { Protect, SignInButton, useAuth, UserButton } from "@clerk/nextjs";
-import { Crown, Home, Mic, Mic2, Zap } from "lucide-react";
+import { Crown, Home, Mic2, Zap } from "lucide-react";
 import { usePathname } from "next/navigation";
 
 import { Button } from "./ui/button";
 import { Badge } from "./ui/badge";
 import DashboardNav from "./DashboardNav";
-
 
 export function Header() {
   const { isSignedIn } = useAuth();
@@ -22,8 +21,8 @@ export function Header() {
     <header
       className={
         isDashboard
-          ? "gradient-emerald sticky top-0 transition-all shadow-xxl backdrop-blur-sm z-50 border-b border-white/15"
-          : "glass-nav sticky top-0 transition-all z-50 backdrop-blur-md border-b border-gray-200/50 shadow-sm"
+          ? "gradient-brand sticky top-0 transition-all shadow-xxl backdrop-blur-sm z-50 border-b border-white/15"
+          : "glass-nav sticky top-0 transition-all z-50 backdrop-blur-md border-b border-brand-200/50 shadow-sm"
       }
     >
       <div className="container mx-auto px-5 lg:px-8">
@@ -47,14 +46,14 @@ export function Header() {
                   height={40}
                   className="h-10 w-10 flex-shrink-0"
                 />
-                <span className="text-xl font-bold text-gray-800 tracking-tight">
+                <span className="text-xl font-bold text-slate-950 tracking-tight">
                   Airtime
                 </span>
                 <Mic2
                   className={
                     isDashboard
-                      ? "h-6 w-6 text-emerald-700 group-hover:rotate-12 transition-transform duration-300"
-                      : "h-6 w-6 text-gray-700 group-hover:rotate-12 transition-transform duration-300"
+                      ? "h-6 w-6 text-brand-700 group-hover:rotate-12 transition-transform duration-300"
+                      : "h-6 w-6 text-brand-700 group-hover:rotate-12 transition-transform duration-300"
                   }
                 />
               </div>
@@ -82,8 +81,8 @@ export function Header() {
                     href="/dashboard/upgrade"
                     className={
                       isDashboard
-                        ? "flex items-center px-4 py-2 rounded-full bg-white/90 text-emerald-600 hover:bg-white hover:scale-110 gap-3 shadow-lg font-semibold transition-all duration-300 border border-white/30"
-                        : "flex items-center px-4 py-2 rounded-full gradient-emerald text-white hover-glow hover:scale-110 gap-3 shadow-lg transition-all duration-300"
+                        ? "flex items-center px-4 py-2 rounded-full bg-white/90 text-brand-600 hover:bg-white hover:scale-110 gap-3 shadow-lg font-semibold transition-all duration-300 border border-white/30"
+                        : "flex items-center px-4 py-2 rounded-full gradient-brand text-white hover-glow hover:scale-110 gap-3 shadow-lg transition-all duration-300"
                     }
                   >
                     <Zap className="h-5 w-5" />
@@ -102,8 +101,8 @@ export function Header() {
                     href="/dashboard/upgrade"
                     className={
                       isDashboard
-                        ? "flex items-center px-4 py-2 rounded-full bg-white/90 text-emerald-600 hover:bg-white hover:scale-110 gap-3 shadow-lg font-semibold transition-all duration-300 border border-white/30"
-                        : "flex items-center px-4 py-2 rounded-full gradient-emerald text-white hover-glow hover:scale-110 gap-3 shadow-lg transition-all duration-300"
+                        ? "flex items-center px-4 py-2 rounded-full bg-white/90 text-brand-600 hover:bg-white hover:scale-110 gap-3 shadow-lg font-semibold transition-all duration-300 border border-white/30"
+                        : "flex items-center px-4 py-2 rounded-full gradient-brand text-white hover-glow hover:scale-110 gap-3 shadow-lg transition-all duration-300"
                     }
                   >
                     <Zap className="h-5 w-5" />
@@ -119,8 +118,8 @@ export function Header() {
                   <Badge
                     className={
                       isDashboard
-                        ? "gap-1.5 hidden md:flex bg-white/95 text-emerald-600 border-0 px-3 py-1.5 shadow-md hover:shadow-lg transition-all duration-300"
-                        : "gap-1.5 hidden md:flex gradient-emerald text-white border-0 px-3 py-1.5 shadow-md hover:shadow-lg transition-all duration-300"
+                        ? "gap-1.5 hidden md:flex bg-white/95 text-brand-600 border-0 px-3 py-1.5 shadow-md hover:shadow-lg transition-all duration-300"
+                        : "gap-1.5 hidden md:flex gradient-brand text-white border-0 px-3 py-1.5 shadow-md hover:shadow-lg transition-all duration-300"
                     }
                   >
                     <Crown className="h-4 w-4" />
@@ -164,8 +163,8 @@ export function Header() {
                 <Button
                   className={
                     isDashboard
-                      ? "flex items-center px-4 py-2 rounded-full bg-white/90 text-emerald-600 hover:bg-white hover:scale-110 gap-3 shadow-lg font-semibold transition-all duration-300 border border-white/30"
-                      : "flex items-center px-4 py-2 rounded-full gradient-emerald text-white hover-glow hover:scale-110 gap-3 shadow-lg transition-all duration-300"
+                      ? "flex items-center px-4 py-2 rounded-full bg-white/90 text-brand-600 hover:bg-white hover:scale-110 gap-3 shadow-lg font-semibold transition-all duration-300 border border-white/30"
+                      : "flex items-center px-4 py-2 rounded-full gradient-brand text-white hover-glow hover:scale-110 gap-3 shadow-lg transition-all duration-300"
                   }
                 >
                   Sign In

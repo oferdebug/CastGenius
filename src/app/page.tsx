@@ -1,8 +1,10 @@
 
-import Header from "@/components/Header";
+import {Header} from '@/components/Header';
 import FeaturesSection from "@/components/Home/FeaturesSection";
 import { HeroSection } from "@/components/Home/HeroSection";
 import PricingSection from "@/components/Home/PricingSection";
+import CtaSection from "@/components/Home/cta-section";
+import Footer from "@/components/Home/Footer";
 
 export default function Home() {
   return (
@@ -11,8 +13,8 @@ export default function Home() {
       <HeroSection />
       <FeaturesSection />
       <PricingSection /> 
-      {/* <CTASection /> */}
-      {/* <Footer /> */}
+       <CtaSection />
+       <Footer />
     </div>
   );
 }
