@@ -5,7 +5,7 @@ import Link from "next/link";
 import { Button } from "../ui/button";
 
 export default async function CtaSection() {
-  const { userId,isAuthenticated } = await auth();
+  const { userId } = await auth();
   const isSignedIn = !!userId;
   
 
@@ -28,20 +28,21 @@ export default async function CtaSection() {
               Ready to Supercharge Your Podcasts?
             </h2>
             <p className="text-xl md:text-2xl text-white mb-10 leading-relaxed drop-shadow-lg">
-              {isAuthenticated
+              {isSignedIn
                 ? "Continue your journey and upload your next masterpiece."
                 : "Sign up now and unlock the full potential of AI-powered podcasting!"}
             </p>
             {isSignedIn ? (
-              <Link href="/dashboard/uploads">
-                <Button
-                  size="lg"
-                  className="bg-white text-brand-600 hover:bg-white/90 hover-glow text-lg px-10 py-7 rounded-xl shadow-2xl font-bold"
-                >
+              <Button
+                asChild
+                size="lg"
+                className="bg-white text-brand-600 hover:bg-white/90 hover-glow text-lg px-10 py-7 rounded-xl shadow-2xl font-bold"
+              >
+                <Link href="/dashboard/uploads">
                   Go to Dashboard
                   <Upload className="ml-2 h-7 w-7" />
-                </Button>
-              </Link>
+                </Link>
+              </Button>
             ) : (
               <SignInButton mode="modal">
                 <Button
@@ -59,4 +60,3 @@ export default async function CtaSection() {
     </section>
   );
 }
-

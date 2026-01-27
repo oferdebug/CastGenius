@@ -5,7 +5,6 @@ interface Testimonial {
   name: string;
   role: string;
   company: string;
-  image?: string;
   content: string;
   rating: number;
 }
@@ -40,6 +39,25 @@ const testimonials: Testimonial[] = [
   },
 ];
 
+function renderStars(rating: number) {
+  const clamped = Math.max(0, Math.min(5, rating ?? 0));
+  return (
+    <span role="img" aria-label={`${clamped} out of 5 stars`}>
+      {[0, 1, 2, 3, 4].map((i) => (
+        <Star
+          key={i}
+          aria-hidden="true"
+          className={`h-5 w-5 ${
+            i < Math.floor(clamped)
+              ? "fill-yellow-400 text-yellow-400"
+              : "fill-none text-slate-300"
+          }`}
+        />
+      ))}
+    </span>
+  );
+}
+
 export function TestimonialsSection() {
   return (
     <section className="container mx-auto px-6 py-24 md:py-32">
@@ -68,12 +86,7 @@ export function TestimonialsSection() {
               className="glass-card rounded-2xl p-8 hover-lift group"
             >
               <div className="flex items-center gap-1 mb-4">
-                {[...Array(testimonial.rating)].map((_, i) => (
-                  <Star
-                    key={i}
-                    className="h-5 w-5 fill-yellow-400 text-yellow-400"
-                  />
-                ))}
+                {renderStars(testimonial.rating)}
               </div>
               <p className="text-slate-700 mb-6 leading-relaxed italic">
                 "{testimonial.content}"

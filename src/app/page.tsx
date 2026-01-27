@@ -1,6 +1,6 @@
 
 import { Header } from "@/components/Header";
-import CtaSection from "@/components/Home/cta-section";
+import CtaSection from "@/components/Home/CtaSection";
 import { FAQSection } from "@/components/Home/FAQSection";
 import FeaturesSection from "@/components/Home/FeaturesSection";
 import Footer from "@/components/Home/Footer";

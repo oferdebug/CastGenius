@@ -1,6 +1,4 @@
-"use client";
-
-import { useEffect } from "react";
+import Script from "next/script";
 
 declare global {
   interface Window {
@@ -9,34 +7,34 @@ declare global {
       targetId: string,
       config?: Record<string, unknown>
     ) => void;
+    dataLayer?: unknown[];
   }
 }
 
+// Validate GA ID format (G-XXXXXXXXXX)
+const GA_ID_PATTERN = /^G-[A-Z0-9]+$/;
+
 export function Analytics() {
-  useEffect(() => {
-    // Google Analytics 4
-    const gaId = process.env.NEXT_PUBLIC_GA_ID;
-    if (gaId && typeof window !== "undefined") {
-      // Load gtag script
-      const script1 = document.createElement("script");
-      script1.async = true;
-      script1.src = `https://www.googletagmanager.com/gtag/js?id=${gaId}`;
-      document.head.appendChild(script1);
+  const gaId = process.env.NEXT_PUBLIC_GA_ID;
 
-      const script2 = document.createElement("script");
-      script2.innerHTML = `
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', '${gaId}');
-      `;
-      document.head.appendChild(script2);
-    }
+  if (!gaId || !GA_ID_PATTERN.test(gaId)) {
+    return null;
+  }
 
-    // Note: To use Vercel Analytics, install @vercel/analytics and add it to your layout
-    // Example: import { Analytics as VercelAnalytics } from '@vercel/analytics/react'
-    // Then add <VercelAnalytics /> to your layout
-  }, []);
-
-  return null;
+  return (
+    <>
+      <Script
+        src={`https://www.googletagmanager.com/gtag/js?id=${gaId}`}
+        strategy="afterInteractive"
+      />
+      <Script id="gtag-init" strategy="afterInteractive">
+        {`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', '${gaId}');
+        `}
+      </Script>
+    </>
+  );
 }

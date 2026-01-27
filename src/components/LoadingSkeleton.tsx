@@ -5,8 +5,8 @@ export function PageSkeleton() {
     <div className="container mx-auto px-6 py-24">
       <div className="max-w-7xl mx-auto space-y-8">
         <div className="text-center space-y-4">
-          <Skeleton className="h-16 w-96 mx-auto" />
-          <Skeleton className="h-6 w-64 mx-auto" />
+          <Skeleton className="h-16 w-full max-w-96 mx-auto" />
+          <Skeleton className="h-6 w-full max-w-64 mx-auto" />
         </div>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {[...Array(6)].map((_, i) => (

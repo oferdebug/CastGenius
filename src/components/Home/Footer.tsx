@@ -35,33 +35,33 @@ export default function Footer() {
               </p>
               {/* Social Links */}
               <div className="flex items-center gap-4">
-                <Link
-                  href="https://twitter.com"
+                <a
+                  href="https://twitter.com/airtime"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="p-2 rounded-lg glass-card hover-lift transition-all group"
-                  aria-label="Twitter"
+                  aria-label="Twitter profile"
                 >
                   <Twitter className="h-5 w-5 text-slate-600 group-hover:text-brand-600 transition-colors" />
-                </Link>
-                <Link
-                  href="https://github.com"
+                </a>
+                <a
+                  href="https://github.com/airtime"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="p-2 rounded-lg glass-card hover-lift transition-all group"
-                  aria-label="GitHub"
+                  aria-label="GitHub profile"
                 >
                   <Github className="h-5 w-5 text-slate-600 group-hover:text-brand-600 transition-colors" />
-                </Link>
-                <Link
-                  href="https://linkedin.com"
+                </a>
+                <a
+                  href="https://linkedin.com/company/airtime"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="p-2 rounded-lg glass-card hover-lift transition-all group"
-                  aria-label="LinkedIn"
+                  aria-label="LinkedIn profile"
                 >
                   <Linkedin className="h-5 w-5 text-slate-600 group-hover:text-brand-600 transition-colors" />
-                </Link>
+                </a>
                 <Link
                   href="mailto:hello@airtime.com"
                   className="p-2 rounded-lg glass-card hover-lift transition-all group"

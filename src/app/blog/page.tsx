@@ -1,6 +1,9 @@
 import Link from "next/link";
 import { Calendar, Clock, ArrowRight } from "lucide-react";
 import { Metadata } from "next";
+import { Header } from "@/components/Header";
+import Footer from "@/components/Home/Footer";
+import { getBlogPosts } from "@/lib/blog";
 
 export const metadata: Metadata = {
   title: "Blog",
@@ -8,48 +11,12 @@ export const metadata: Metadata = {
     "Learn about podcasting, AI transcription, content creation, and more. Tips, tutorials, and insights from the Airtime team.",
 };
 
-interface BlogPost {
-  slug: string;
-  title: string;
-  excerpt: string;
-  date: string;
-  readTime: string;
-  category: string;
-}
+export default async function BlogPage() {
+  const blogPosts = await getBlogPosts();
 
-const blogPosts: BlogPost[] = [
-  {
-    slug: "getting-started-with-podcast-transcription",
-    title: "Getting Started with AI Podcast Transcription",
-    excerpt:
-      "Learn how to leverage AI-powered transcription to make your podcast content more accessible and searchable.",
-    date: "2025-01-20",
-    readTime: "5 min read",
-    category: "Tutorial",
-  },
-  {
-    slug: "improve-podcast-seo",
-    title: "5 Ways to Improve Your Podcast SEO",
-    excerpt:
-      "Discover proven strategies to boost your podcast's discoverability and reach a wider audience through SEO best practices.",
-    date: "2025-01-15",
-    readTime: "7 min read",
-    category: "Marketing",
-  },
-  {
-    slug: "ai-content-creation-tips",
-    title: "AI Content Creation: Tips for Podcasters",
-    excerpt:
-      "Explore how AI can help you create engaging social media posts, summaries, and key moments from your podcast episodes.",
-    date: "2025-01-10",
-    readTime: "6 min read",
-    category: "Tips",
-  },
-];
-
-export default function BlogPage() {
   return (
     <div className="min-h-screen">
+      <Header />
       <div className="container mx-auto px-6 py-24">
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-16">
@@ -74,7 +41,7 @@ export default function BlogPage() {
                   </span>
                   <div className="flex items-center gap-1">
                     <Calendar className="h-4 w-4" />
-                    {new Date(post.date).toLocaleDateString("en-US", {
+                    {new Date(post.date).toLocaleDateString(undefined, {
                       year: "numeric",
                       month: "long",
                       day: "numeric",
@@ -103,6 +70,7 @@ export default function BlogPage() {
           </div>
         </div>
       </div>
+      <Footer />
     </div>
   );
 }

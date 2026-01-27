@@ -20,18 +20,35 @@ export function NewsletterSignup() {
 
     setIsLoading(true);
     
-    // Simulate API call - replace with actual newsletter API
-    setTimeout(() => {
-      setIsLoading(false);
+    try {
+      // TODO: Replace with actual newsletter API endpoint
+      // Example: const response = await fetch('/api/newsletter', { method: 'POST', body: JSON.stringify({ email }) });
+      // For now, simulate API call with occasional failures for testing error handling (development only)
+      await new Promise((resolve, reject) => {
+        setTimeout(() => {
+          // Simulate ~10% failure rate for testing error handling (development only)
+          if (process.env.NODE_ENV === 'development' && Math.random() < 0.1) {
+            reject(new Error("Network error: Unable to connect to server"));
+          } else {
+            resolve(undefined);
+          }
+        }, 1000);
+      });
+      
       toast.success("Successfully subscribed to our newsletter!", {
         description: "Check your email for a confirmation message.",
       });
       setEmail("");
-    }, 1000);
+    } catch (error) {
+      const errorMessage = error instanceof Error ? error.message : "Failed to subscribe. Please try again.";
+      toast.error(errorMessage);
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
-    <div className="glass-card rounded-2xl p-6 md:p-8" suppressHydrationWarning>
+    <div className="glass-card rounded-2xl p-6 md:p-8">
       <div className="flex items-start gap-4 mb-4">
         <div className="p-2 rounded-lg gradient-brand">
           <Mail className="h-5 w-5 text-white" />
