@@ -1,4 +1,4 @@
-// biome-ignore assist/source/organizeImports: <explanation>
+// biome-ignore assist/source/organizeImports: preserve side-effect ordering
 import { clsx, type ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge"
 

@@ -89,17 +89,17 @@ export default function RootLayout({
 }>) {
   return (
     <ClerkProvider>
-      <ConvexClientProvider>
-        <html lang="en">
-          <body
-            className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-          >
+      <html lang="en">
+        <body
+          className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        >
+          <ConvexClientProvider>
             <main className="min-h-screen">{children}</main>
             <Toaster position="top-right" richColors />
             <Analytics />
-          </body>
-        </html>
-      </ConvexClientProvider>
+          </ConvexClientProvider>
+        </body>
+      </html>
     </ClerkProvider>
   );
 }

@@ -1,13 +1,16 @@
 "use client";
 
-import React, { Component, type ReactNode, type ReactElement, type ErrorInfo } from "react";
+import React, { Component, type ReactNode, type ErrorInfo } from "react";
 import { AlertTriangle, RefreshCw } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { Button } from "./ui/button";
 
+/** Canonical reset prop for fallback. Legacy handleReset/onReset are forwarded with deprecation. */
+type FallbackProps = { resetErrorBoundary?: () => void };
+
 interface Props {
   children: ReactNode;
-  fallback?: ReactNode | ((error: Error | null, reset: () => void) => ReactNode);
+  fallback?: ReactNode | ((error: Error | null, reset: () => void) => ReactNode) | React.ComponentType<FallbackProps>;
 }
 
 interface State {
@@ -27,18 +30,12 @@ export class ErrorBoundary extends Component<Props, State> {
 
   componentDidCatch(error: Error, errorInfo: ErrorInfo) {
     console.error("ErrorBoundary caught an error:", error, errorInfo);
-    
-    // Send error to reporting service
-    // Example with modern @sentry/nextjs:
-    // import * as Sentry from "@sentry/nextjs";
-    // Sentry.captureException(error, { extra: errorInfo });
-    // Ensure Sentry is initialized at app startup (e.g., in layout.tsx or _app.tsx)
-    // For now, this is a placeholder - uncomment and configure when Sentry is set up:
+    // Send to reporting service, e.g.:
     // import * as Sentry from "@sentry/nextjs";
     // Sentry.captureException(error, { extra: errorInfo });
   }
 
-  handleReset = () => {
+  resetErrorBoundary = () => {
     this.setState({ hasError: false, error: null });
   };
 
@@ -46,22 +43,32 @@ export class ErrorBoundary extends Component<Props, State> {
     if (this.state.hasError) {
       if (this.props.fallback) {
         if (typeof this.props.fallback === 'function') {
-          return this.props.fallback(this.state.error, this.handleReset);
+          const fn = this.props.fallback as ((error: Error | null, reset: () => void) => ReactNode) | React.ComponentType<FallbackProps>;
+          if (fn.length >= 2) {
+            return (fn as (error: Error | null, reset: () => void) => ReactNode)(this.state.error, this.resetErrorBoundary);
+          }
+          return React.createElement(fn as React.ComponentType<FallbackProps>, { resetErrorBoundary: this.resetErrorBoundary });
         }
-        
-        if (React.isValidElement<{ onReset?: () => void; handleReset?: () => void }>(this.props.fallback)) {
-          const { onReset, handleReset } = this.props.fallback.props;
-          return React.cloneElement(this.props.fallback, { 
-            onReset: onReset ?? this.handleReset,
-            handleReset: handleReset ?? this.handleReset 
-          });
+        if (React.isValidElement(this.props.fallback)) {
+          const props = this.props.fallback.props as Record<string, unknown>;
+          const onReset = typeof props?.onReset === "function" ? props.onReset : undefined;
+          const handleReset = typeof props?.handleReset === "function" ? props.handleReset : undefined;
+          if (handleReset !== undefined) {
+            console.warn("[ErrorBoundary] handleReset is deprecated; use resetErrorBoundary on your fallback component.");
+          }
+          const effectiveReset = onReset ?? handleReset ?? this.resetErrorBoundary;
+          return React.cloneElement(this.props.fallback, {
+            resetErrorBoundary: effectiveReset,
+            onReset: effectiveReset,
+            handleReset: effectiveReset,
+          } as Record<string, unknown>);
         }
-
         return (
           <div className="relative">
             {this.props.fallback}
             <button
-              onClick={this.handleReset}
+              type="button"
+              onClick={this.resetErrorBoundary}
               className="mt-4 px-4 py-2 text-sm text-brand-600 hover:text-brand-800 flex items-center gap-2 justify-center"
               aria-label="Reset error state"
             >
@@ -72,7 +79,7 @@ export class ErrorBoundary extends Component<Props, State> {
         );
       }
 
-      return <ErrorFallbackUI onReset={this.handleReset} />;
+      return <ErrorFallbackUI resetErrorBoundary={this.resetErrorBoundary} />;
     }
 
     return this.props.children;
@@ -81,9 +88,9 @@ export class ErrorBoundary extends Component<Props, State> {
 
 // Separate component to use Next.js router hook
 function ErrorFallbackUI({
-  onReset,
+  resetErrorBoundary,
 }: {
-  onReset: () => void;
+  resetErrorBoundary: () => void;
 }) {
   const router = useRouter();
 
@@ -91,7 +98,7 @@ function ErrorFallbackUI({
   const userMessage = "An unexpected error occurred. Please try again.";
 
   return (
-    <div className="min-h-screen flex items-center justify-center p-4 bg-gradient-to-b from-white to-brand-50/30">
+    <div className="min-h-screen flex items-center justify-center p-4 bg-linear-to-b from-white to-brand-50/30">
       <div
         className="max-w-md w-full glass-card rounded-2xl p-8 text-center"
         role="alert"
@@ -108,7 +115,7 @@ function ErrorFallbackUI({
         </p>
         <div className="flex flex-col sm:flex-row gap-3 justify-center">
           <Button
-            onClick={onReset}
+            onClick={resetErrorBoundary}
             className="gradient-brand text-white"
           >
             <RefreshCw className="mr-2 h-4 w-4" />

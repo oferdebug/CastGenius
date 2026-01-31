@@ -2,6 +2,27 @@ import { Github, Linkedin, Mail, Mic2, Twitter } from "lucide-react";
 import Link from "next/link";
 import { NewsletterSignup } from "./NewsletterSignup";
 
+const footerLinks = {
+  Product: [
+    { href: "/features", label: "Features" },
+    { href: "/pricing", label: "Pricing" },
+    { href: "/dashboard", label: "Dashboard" },
+    { href: "/integrations", label: "Integrations" },
+  ],
+  Company: [
+    { href: "/about", label: "About Us" },
+    { href: "/blog", label: "Blog" },
+    { href: "/careers", label: "Careers" },
+    { href: "/contact", label: "Contact" },
+  ],
+  Legal: [
+    { href: "/privacy", label: "Privacy Policy" },
+    { href: "/terms", label: "Terms of Service" },
+    { href: "/cookies", label: "Cookie Policy" },
+    { href: "/security", label: "Security" },
+  ],
+} as const;
+
 export default function Footer() {
   const currentYear = new Date().getFullYear();
 
@@ -62,138 +83,35 @@ export default function Footer() {
                 >
                   <Linkedin className="h-5 w-5 text-slate-600 group-hover:text-brand-600 transition-colors" />
                 </a>
-                <Link
+                <a
                   href="mailto:hello@airtime.com"
                   className="p-2 rounded-lg glass-card hover-lift transition-all group"
                   aria-label="Email"
                 >
                   <Mail className="h-5 w-5 text-slate-600 group-hover:text-brand-600 transition-colors" />
-                </Link>
+                </a>
               </div>
             </div>
 
-            {/* Product Section */}
-            <div>
-              <h3 className="font-extrabold mb-5 text-slate-950 text-sm uppercase tracking-wider">
-                Product
-              </h3>
-              <ul className="space-y-3">
-                <li>
-                  <Link
-                    href="/features"
-                    className="text-slate-600 hover:text-brand-600 text-sm inline-block hover:translate-x-1 transition-all"
-                  >
-                    Features
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href="/pricing"
-                    className="text-slate-600 hover:text-brand-600 text-sm inline-block hover:translate-x-1 transition-all"
-                  >
-                    Pricing
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href="/dashboard"
-                    className="text-slate-600 hover:text-brand-600 text-sm inline-block hover:translate-x-1 transition-all"
-                  >
-                    Dashboard
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href="/integrations"
-                    className="text-slate-600 hover:text-brand-600 text-sm inline-block hover:translate-x-1 transition-all"
-                  >
-                    Integrations
-                  </Link>
-                </li>
-              </ul>
-            </div>
-
-            {/* Company Section */}
-            <div>
-              <h3 className="font-extrabold mb-5 text-slate-950 text-sm uppercase tracking-wider">
-                Company
-              </h3>
-              <ul className="space-y-3">
-                <li>
-                  <Link
-                    href="/about"
-                    className="text-slate-600 hover:text-brand-600 text-sm inline-block hover:translate-x-1 transition-all"
-                  >
-                    About Us
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href="/blog"
-                    className="text-slate-600 hover:text-brand-600 text-sm inline-block hover:translate-x-1 transition-all"
-                  >
-                    Blog
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href="/careers"
-                    className="text-slate-600 hover:text-brand-600 text-sm inline-block hover:translate-x-1 transition-all"
-                  >
-                    Careers
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href="/contact"
-                    className="text-slate-600 hover:text-brand-600 text-sm inline-block hover:translate-x-1 transition-all"
-                  >
-                    Contact
-                  </Link>
-                </li>
-              </ul>
-            </div>
-
-            {/* Legal Section */}
-            <div>
-              <h3 className="font-extrabold mb-5 text-slate-950 text-sm uppercase tracking-wider">
-                Legal
-              </h3>
-              <ul className="space-y-3">
-                <li>
-                  <Link
-                    href="/privacy"
-                    className="text-slate-600 hover:text-brand-600 text-sm inline-block hover:translate-x-1 transition-all"
-                  >
-                    Privacy Policy
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href="/terms"
-                    className="text-slate-600 hover:text-brand-600 text-sm inline-block hover:translate-x-1 transition-all"
-                  >
-                    Terms of Service
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href="/cookies"
-                    className="text-slate-600 hover:text-brand-600 text-sm inline-block hover:translate-x-1 transition-all"
-                  >
-                    Cookie Policy
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href="/security"
-                    className="text-slate-600 hover:text-brand-600 text-sm inline-block hover:translate-x-1 transition-all"
-                  >
-                    Security
-                  </Link>
-                </li>
-              </ul>
-            </div>
+            {Object.entries(footerLinks).map(([section, links]) => (
+              <div key={section}>
+                <h3 className="font-extrabold mb-5 text-slate-950 text-sm uppercase tracking-wider">
+                  {section}
+                </h3>
+                <ul className="space-y-3">
+                  {links.map(({ href, label }) => (
+                    <li key={href}>
+                      <Link
+                        href={href}
+                        className="text-slate-600 hover:text-brand-600 text-sm inline-block hover:translate-x-1 transition-all"
+                      >
+                        {label}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
           </div>
 
           {/* Bottom Bar */}

@@ -4,6 +4,7 @@
  * Centralized configuration values used across the application.
  * Includes file size limits, allowed formats, timing constants, and UI config.
  */
+import type { Accept } from "react-dropzone";
 import type { LucideIcon } from "lucide-react";
 import {
   FileSignature,
@@ -45,6 +46,31 @@ export const ALLOWED_AUDIO_TYPES = [
   "audio/3gpp2", // 3G2
 ];
 
+const MIME_EXTENSIONS: Record<string, string[]> = {
+  "audio/mpeg": [".mp3"],
+  "audio/mp3": [".mp3"],
+  "audio/mp4": [".m4a", ".mp4"],
+  "audio/m4a": [".m4a"],
+  "audio/x-m4a": [".m4a"],
+  "audio/wav": [".wav", ".wave"],
+  "audio/x-wav": [".wav", ".wave"],
+  "audio/wave": [".wav", ".wave"],
+  "audio/aac": [".aac"],
+  "audio/aacp": [".aac"],
+  "audio/ogg": [".ogg", ".oga"],
+  "audio/opus": [".opus"],
+  "audio/webm": [".webm"],
+  "audio/flac": [".flac"],
+  "audio/x-flac": [".flac"],
+  "audio/3gpp": [".3gp"],
+  "audio/3gpp2": [".3g2"],
+};
+
+/** Accept object for file inputs derived from ALLOWED_AUDIO_TYPES */
+export const ACCEPT_AUDIO: Accept = Object.fromEntries(
+  ALLOWED_AUDIO_TYPES.map((mime) => [mime, MIME_EXTENSIONS[mime] ?? []])
+) as Accept;
+
 /**
  * Progress animation constants
  *
@@ -63,8 +89,8 @@ export const PROGRESS_UPDATE_INTERVAL_MS = 1000;
  * Used for duration formatting and time calculations
  */
 export const MS_PER_MINUTE = 60000;
-export const MS_PER_HOUR = 3600000;
-export const MS_PER_DAY = 86400000;
+export const MS_PER_HOUR = MS_PER_MINUTE * 60;
+export const MS_PER_DAY = MS_PER_HOUR * 24;
 
 /**
  * UI configuration for generation outputs

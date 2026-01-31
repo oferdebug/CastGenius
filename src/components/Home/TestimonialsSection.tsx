@@ -42,7 +42,7 @@ const testimonials: Testimonial[] = [
 function renderStars(rating: number) {
   const clamped = Math.max(0, Math.min(5, rating ?? 0));
   return (
-    <span role="img" aria-label={`${clamped} out of 5 stars`}>
+    <span role="img" aria-label={`${clamped} out of 5 stars`} className="inline-flex">
       {[0, 1, 2, 3, 4].map((i) => (
         <Star
           key={i}

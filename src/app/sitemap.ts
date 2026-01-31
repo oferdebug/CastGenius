@@ -1,10 +1,9 @@
 import type { MetadataRoute } from "next";
 import { getBlogPosts } from "@/lib/blog";
 
-// Stable dates for sitemap entries - update these when pages actually change
+// Stable dates for sitemap entries - update when pages actually change
 const LAST_MODIFIED_DATES = {
   home: new Date("2025-01-27"),
-  blog: new Date() // Will be updated by getLatestPostDate
 } as const;
 
 // Helper to get the most recent blog post date

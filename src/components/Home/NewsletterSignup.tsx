@@ -12,8 +12,8 @@ export function NewsletterSignup() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    
-    if (!email || !email.includes("@")) {
+    const trimmed = email.trim();
+    if (!trimmed || !/^\S+@\S+\.\S+$/.test(trimmed)) {
       toast.error("Please enter a valid email address");
       return;
     }
@@ -22,7 +22,7 @@ export function NewsletterSignup() {
     
     try {
       // TODO: Replace with actual newsletter API endpoint
-      // Example: const response = await fetch('/api/newsletter', { method: 'POST', body: JSON.stringify({ email }) });
+      // Example: const response = await fetch('/api/newsletter', { method: 'POST', body: JSON.stringify({ email: trimmed }) });
       // For now, simulate API call with occasional failures for testing error handling (development only)
       await new Promise((resolve, reject) => {
         setTimeout(() => {
@@ -62,10 +62,9 @@ export function NewsletterSignup() {
           </p>
         </div>
       </div>
-      <form 
-        onSubmit={handleSubmit} 
+      <form
+        onSubmit={handleSubmit}
         className="flex flex-col sm:flex-row gap-3"
-        suppressHydrationWarning
       >
         <Input
           type="email"
