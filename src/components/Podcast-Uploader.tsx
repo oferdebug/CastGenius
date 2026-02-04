@@ -34,9 +34,9 @@ import {
   createProjectAction,
   validateUploadAction,
 } from "@/app/actions/projects";
-import { Button } from "@/components/ui/button";
 import { UploadDropzone } from "@/components/Upload-Dropzone";
 import { UploadProgress } from "@/components/Upload-Progress";
+import { Button } from "@/components/ui/button";
 import { estimateDurationFromSize, getAudioDuration } from "@/lib/audio-utils";
 import type { UploadStatus } from "@/lib/types";
 

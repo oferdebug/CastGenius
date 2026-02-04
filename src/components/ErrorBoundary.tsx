@@ -55,32 +55,46 @@ export class ErrorBoundary extends Component<Props, State> {
   render() {
     if (this.state.hasError) {
       if (this.props.fallback) {
-        if (typeof this.props.fallback === "function" && "fallbackType" in this.props) {
+        if (
+          typeof this.props.fallback === "function" &&
+          "fallbackType" in this.props
+        ) {
           const { fallback, fallbackType } = this.props;
           if (fallbackType === "render") {
-            return (fallback as (error: Error | null, reset: () => void) => ReactNode)(
-              this.state.error,
-              this.resetErrorBoundary
-            );
+            return (
+              fallback as (error: Error | null, reset: () => void) => ReactNode
+            )(this.state.error, this.resetErrorBoundary);
           }
           if (fallbackType === "component") {
-            return React.createElement(fallback as React.ComponentType<FallbackProps>, {
-              error: this.state.error,
-              reset: this.resetErrorBoundary,
-              resetErrorBoundary: this.resetErrorBoundary,
-            });
+            return React.createElement(
+              fallback as React.ComponentType<FallbackProps>,
+              {
+                error: this.state.error,
+                reset: this.resetErrorBoundary,
+                resetErrorBoundary: this.resetErrorBoundary,
+              },
+            );
           }
           console.error("[ErrorBoundary] Unknown fallbackType:", fallbackType);
-          throw new Error(`[ErrorBoundary] Unknown fallbackType: ${String(fallbackType)}`);
+          throw new Error(
+            `[ErrorBoundary] Unknown fallbackType: ${String(fallbackType)}`,
+          );
         }
         if (React.isValidElement(this.props.fallback)) {
           const props = this.props.fallback.props as Record<string, unknown>;
-          const onReset = typeof props?.onReset === "function" ? props.onReset : undefined;
-          const handleReset = typeof props?.handleReset === "function" ? props.handleReset : undefined;
+          const onReset =
+            typeof props?.onReset === "function" ? props.onReset : undefined;
+          const handleReset =
+            typeof props?.handleReset === "function"
+              ? props.handleReset
+              : undefined;
           if (handleReset !== undefined) {
-            console.warn("[ErrorBoundary] handleReset is deprecated; use resetErrorBoundary on your fallback component.");
+            console.warn(
+              "[ErrorBoundary] handleReset is deprecated; use resetErrorBoundary on your fallback component.",
+            );
           }
-          const effectiveReset = onReset ?? handleReset ?? this.resetErrorBoundary;
+          const effectiveReset =
+            onReset ?? handleReset ?? this.resetErrorBoundary;
           return React.cloneElement(this.props.fallback, {
             resetErrorBoundary: effectiveReset,
             onReset: effectiveReset,
@@ -89,9 +103,13 @@ export class ErrorBoundary extends Component<Props, State> {
         }
         if (typeof this.props.fallback === "function") {
           if (process.env.NODE_ENV !== "production") {
-            console.error("[ErrorBoundary] fallback is a function but fallbackType is missing. Use fallbackType: 'render' or 'component'.");
+            console.error(
+              "[ErrorBoundary] fallback is a function but fallbackType is missing. Use fallbackType: 'render' or 'component'.",
+            );
           }
-          return <ErrorFallbackUI resetErrorBoundary={this.resetErrorBoundary} />;
+          return (
+            <ErrorFallbackUI resetErrorBoundary={this.resetErrorBoundary} />
+          );
         }
         return (
           <div className="relative">
@@ -151,10 +169,7 @@ function ErrorFallbackUI({
             <RefreshCw className="mr-2 h-4 w-4" />
             Try Again
           </Button>
-          <Button
-            variant="outline"
-            onClick={() => router.push("/")}
-          >
+          <Button variant="outline" onClick={() => router.push("/")}>
             Go Home
           </Button>
         </div>

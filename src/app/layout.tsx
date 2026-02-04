@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { ClerkProvider } from "@clerk/nextjs";
+import { Analytics } from "@/components/Analytics";
 import ConvexClientProvider from "@/components/ConvexClientProvider";
 import { Toaster } from "@/components/ui/sonner";
-import { Analytics } from "@/components/Analytics";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -76,9 +76,11 @@ export const metadata: Metadata = {
     },
   },
   verification: {
-    ...(process.env.NEXT_PUBLIC_GOOGLE_VERIFICATION ? {
-      google: process.env.NEXT_PUBLIC_GOOGLE_VERIFICATION
-    } : {}),
+    ...(process.env.NEXT_PUBLIC_GOOGLE_VERIFICATION
+      ? {
+          google: process.env.NEXT_PUBLIC_GOOGLE_VERIFICATION,
+        }
+      : {}),
   },
 };
 
@@ -103,5 +105,3 @@ export default function RootLayout({
     </ClerkProvider>
   );
 }
-
-

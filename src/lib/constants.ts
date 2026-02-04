@@ -4,6 +4,7 @@
  * Centralized configuration values used across the application.
  * Includes file size limits, allowed formats, timing constants, and UI config.
  */
+/** biome-ignore-all assist/source/organizeImports: preserve import grouping for dropzone component clarity */
 import type { Accept } from "react-dropzone";
 import type { LucideIcon } from "lucide-react";
 import {
@@ -68,7 +69,7 @@ const MIME_EXTENSIONS: Record<string, string[]> = {
 
 /** Accept object for file inputs derived from ALLOWED_AUDIO_TYPES */
 export const ACCEPT_AUDIO: Accept = Object.fromEntries(
-  ALLOWED_AUDIO_TYPES.map((mime) => [mime, MIME_EXTENSIONS[mime] ?? []])
+  ALLOWED_AUDIO_TYPES.map((mime) => [mime, MIME_EXTENSIONS[mime] ?? []]),
 ) as Accept;
 
 /**

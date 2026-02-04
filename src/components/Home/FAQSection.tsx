@@ -1,10 +1,10 @@
+import { HelpCircle } from "lucide-react";
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
 } from "../ui/accordion";
-import { HelpCircle } from "lucide-react";
 
 interface FAQ {
   id: string;
@@ -63,8 +63,7 @@ export function FAQSection() {
             </span>
           </div>
           <h2 className="text-5xl md:text-6xl font-extrabold mb-4 text-slate-950">
-            Got{" "}
-            <span className="gradient-brand-text">Questions?</span>
+            Got <span className="gradient-brand-text">Questions?</span>
           </h2>
           <p className="text-xl text-slate-700 max-w-2xl mx-auto">
             Find answers to common questions about Airtime and how it can help

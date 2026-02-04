@@ -1,4 +1,4 @@
-import { Star, Quote } from "lucide-react";
+import { Quote, Star } from "lucide-react";
 
 interface Testimonial {
   id: string;
@@ -42,7 +42,11 @@ const testimonials: Testimonial[] = [
 function renderStars(rating: number) {
   const clamped = Math.max(0, Math.min(5, rating ?? 0));
   return (
-    <span role="img" aria-label={`${clamped} out of 5 stars`} className="inline-flex">
+    <span
+      role="img"
+      aria-label={`${clamped} out of 5 stars`}
+      className="inline-flex"
+    >
       {[0, 1, 2, 3, 4].map((i) => (
         <Star
           key={i}
@@ -74,8 +78,8 @@ export function TestimonialsSection() {
             <span className="gradient-brand-text">Podcast Creators</span>
           </h2>
           <p className="text-xl text-slate-700 max-w-2xl mx-auto">
-            Join thousands of creators who are transforming their podcast workflow
-            with AI-powered tools.
+            Join thousands of creators who are transforming their podcast
+            workflow with AI-powered tools.
           </p>
         </div>
 
@@ -96,9 +100,7 @@ export function TestimonialsSection() {
                   {testimonial.name.charAt(0)}
                 </div>
                 <div>
-                  <p className="font-bold text-slate-950">
-                    {testimonial.name}
-                  </p>
+                  <p className="font-bold text-slate-950">{testimonial.name}</p>
                   <p className="text-sm text-slate-600">
                     {testimonial.role} at {testimonial.company}
                   </p>

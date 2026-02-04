@@ -17,7 +17,12 @@
 import { CheckCircle2, Clock, FileAudio, Loader2, XCircle } from "lucide-react";
 import { formatDuration, formatFileSize } from "@/lib/utils";
 
-export type UploadStatus = "idle" | "uploading" | "processing" | "completed" | "error";
+export type UploadStatus =
+  | "idle"
+  | "uploading"
+  | "processing"
+  | "completed"
+  | "error";
 
 export interface UploadProgressProps {
   fileName: string;
@@ -28,7 +33,10 @@ export interface UploadProgressProps {
   error?: string;
 }
 
-const STATUS_LABEL: Record<Exclude<UploadStatus, "completed" | "error">, string> = {
+const STATUS_LABEL: Record<
+  Exclude<UploadStatus, "completed" | "error">,
+  string
+> = {
   idle: "Ready to upload",
   uploading: "Uploading...",
   processing: "Processing...",
@@ -37,7 +45,9 @@ const STATUS_LABEL: Record<Exclude<UploadStatus, "completed" | "error">, string>
 function StatusIcon({ status }: { status: UploadStatus }) {
   if (status === "idle") return null;
   if (status === "uploading" || status === "processing") {
-    return <Loader2 className="h-7 w-7 animate-spin text-emerald-600" aria-hidden />;
+    return (
+      <Loader2 className="h-7 w-7 animate-spin text-emerald-600" aria-hidden />
+    );
   }
   if (status === "completed") {
     return <CheckCircle2 className="h-7 w-7 text-emerald-600" aria-hidden />;
@@ -83,7 +93,9 @@ export function UploadProgress({
           </div>
 
           <div className="min-w-0 flex-1">
-            <p className="truncate text-lg font-bold text-gray-900">{fileName}</p>
+            <p className="truncate text-lg font-bold text-gray-900">
+              {fileName}
+            </p>
             <div className="mt-2 flex items-center gap-3 text-sm text-gray-600">
               <span className="font-medium">{formatFileSize(fileSize)}</span>
               {fileDuration != null && (
@@ -91,7 +103,9 @@ export function UploadProgress({
                   <span aria-hidden>•</span>
                   <div className="flex items-center gap-1.5">
                     <Clock className="h-4 w-4" aria-hidden />
-                    <span className="font-medium">{formatDuration(fileDuration)}</span>
+                    <span className="font-medium">
+                      {formatDuration(fileDuration)}
+                    </span>
                   </div>
                 </>
               )}
@@ -137,7 +151,10 @@ export function UploadProgress({
         {status === "error" && error && (
           <div className="rounded-xl border-2 border-red-200 bg-red-50 p-5">
             <div className="flex items-start gap-4">
-              <XCircle className="mt-0.5 h-6 w-6 shrink-0 text-red-600" aria-hidden />
+              <XCircle
+                className="mt-0.5 h-6 w-6 shrink-0 text-red-600"
+                aria-hidden
+              />
               <div className="min-w-0 flex-1 space-y-2">
                 <p className="font-bold text-red-900">Upload Failed</p>
                 <p className="text-sm leading-relaxed text-red-700">{error}</p>

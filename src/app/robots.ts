@@ -1,8 +1,10 @@
-import { MetadataRoute } from "next";
+import type { MetadataRoute } from "next";
 
 export default function robots(): MetadataRoute.Robots {
   // Remove trailing slash from base URL to avoid double slashes
-  const baseUrl = (process.env.NEXT_PUBLIC_APP_URL || "https://airtime.com").replace(/\/+$/, '');
+  const baseUrl = (
+    process.env.NEXT_PUBLIC_APP_URL || "https://airtime.com"
+  ).replace(/\/+$/, "");
 
   return {
     rules: [

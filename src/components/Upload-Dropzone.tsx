@@ -1,14 +1,8 @@
 "use client";
 /** biome-ignore-all assist/source/organizeImports: preserve import grouping for dropzone component clarity */
-import {
-  CheckCircle2Icon,
-  FileAudio,
-  Loader2,
-  Upload,
-  XCircleIcon,
-} from "lucide-react";
+import { CheckCircle2Icon, Loader2, Upload, XCircleIcon } from "lucide-react";
 import { useCallback } from "react";
-import { useDropzone, type FileRejection } from "react-dropzone";
+import { type FileRejection, useDropzone } from "react-dropzone";
 import { ACCEPT_AUDIO, MAX_FILE_SIZE } from "@/lib/constants";
 import { cn } from "@/lib/utils";
 

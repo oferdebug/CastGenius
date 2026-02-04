@@ -1,58 +1,65 @@
-// Blog data fetching utility
-// This can be replaced with a CMS or MDX file loader later
-
+/**
+ * Blog data layer. Replace with CMS or MDX later.
+ * Used by: app/blog/page.tsx, app/blog/[slug]/page.tsx, app/sitemap.ts
+ */
 export interface BlogPost {
   slug: string;
   title: string;
   excerpt: string;
+  /** ISO date string (YYYY-MM-DD) */
   date: string;
   readTime: string;
   category: string;
 }
 
-// In a real app, this would fetch from a CMS or read MDX files
-// For now, we'll use a function that can be easily replaced
+const MOCK_POSTS: BlogPost[] = [
+  {
+    slug: "getting-started-with-podcast-transcription",
+    title: "Getting Started with AI Podcast Transcription",
+    excerpt:
+      "Learn how to leverage AI-powered transcription to make your podcast content more accessible and searchable.",
+    date: "2025-01-20",
+    readTime: "5 min read",
+    category: "Tutorial",
+  },
+  {
+    slug: "improve-podcast-seo",
+    title: "5 Ways to Improve Your Podcast SEO",
+    excerpt:
+      "Discover proven strategies to boost your podcast's discoverability and reach a wider audience through SEO best practices.",
+    date: "2025-01-15",
+    readTime: "7 min read",
+    category: "Marketing",
+  },
+  {
+    slug: "ai-content-creation-tips",
+    title: "AI Content Creation: Tips for Podcasters",
+    excerpt:
+      "Explore how AI can help you create engaging social media posts, summaries, and key moments from your podcast episodes.",
+    date: "2025-01-10",
+    readTime: "6 min read",
+    category: "Tips",
+  },
+];
+
+/** All posts. Replace with CMS/DB fetch or MDX when ready. */
 export async function getBlogPosts(): Promise<BlogPost[]> {
-  // TODO: Replace with actual CMS/DB fetch or MDX file reading
-  // Example: return await fetchPostsFromCMS() or await readMDXFiles()
-  
-  return [
-    {
-      slug: "getting-started-with-podcast-transcription",
-      title: "Getting Started with AI Podcast Transcription",
-      excerpt:
-        "Learn how to leverage AI-powered transcription to make your podcast content more accessible and searchable.",
-      date: "2025-01-20",
-      readTime: "5 min read",
-      category: "Tutorial",
-    },
-    {
-      slug: "improve-podcast-seo",
-      title: "5 Ways to Improve Your Podcast SEO",
-      excerpt:
-        "Discover proven strategies to boost your podcast's discoverability and reach a wider audience through SEO best practices.",
-      date: "2025-01-15",
-      readTime: "7 min read",
-      category: "Marketing",
-    },
-    {
-      slug: "ai-content-creation-tips",
-      title: "AI Content Creation: Tips for Podcasters",
-      excerpt:
-        "Explore how AI can help you create engaging social media posts, summaries, and key moments from your podcast episodes.",
-      date: "2025-01-10",
-      readTime: "6 min read",
-      category: "Tips",
-    },
-  ];
+  return [...MOCK_POSTS];
 }
 
-// Helper to get a single blog post by slug
-// TODO: Replace getBlogPost and getBlogPosts with direct database/CMS queries
-// When migrating to a real data source, implement getPostBySlug(slug) that performs
-// an O(1)/indexed lookup instead of fetching all posts and scanning the list.
-// This will improve performance as the blog grows.
+/** Single post by slug. TODO: O(1) lookup when moving to DB/CMS. */
 export async function getBlogPost(slug: string): Promise<BlogPost | null> {
   const posts = await getBlogPosts();
-  return posts.find((post) => post.slug === slug) || null;
+  return posts.find((p) => p.slug === slug) ?? null;
+}
+
+/** Latest post date for sitemap lastModified. */
+export async function getLatestPostDate(): Promise<Date> {
+  const posts = await getBlogPosts();
+  if (posts.length === 0) return new Date();
+  const sorted = [...posts].sort(
+    (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime(),
+  );
+  const d = new Date(sorted[0].date);
+  return Number.isNaN(d.getTime()) ? new Date() : d;
 }
