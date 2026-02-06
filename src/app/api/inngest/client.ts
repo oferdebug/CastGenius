@@ -20,6 +20,15 @@ type Events = {
       mimeType: string;
     };
   };
+  "podcast/retry-job": {
+    data: {
+      projectId: string;
+      job: string;
+      userId: string;
+      originalPlan: "free" | "pro" | "ultra";
+      currentPlan: "free" | "pro" | "ultra";
+    };
+  };
 };
 
 export const inngest = new Inngest({

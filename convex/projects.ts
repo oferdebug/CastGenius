@@ -17,6 +17,19 @@ export const getProjectById = query({
   },
 });
 
+/** Same as getProjectById but accepts { projectId } for server actions. */
+export const getProject = query({
+  args: { projectId: v.id("projects") },
+  handler: async (ctx, { projectId }) => {
+    const identity = await ctx.auth.getUserIdentity();
+    const userId = identity?.subject;
+    if (!userId) return null;
+    const project = await ctx.db.get(projectId);
+    if (!project || project.userId !== userId) return null;
+    return project;
+  },
+});
+
 export const createProject = mutation({
   args: {
     userId: v.string(),
