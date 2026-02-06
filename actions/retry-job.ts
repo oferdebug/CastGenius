@@ -54,7 +54,7 @@ export type RetryableJob =
     throw new Error("Project not found or access denied");
   }
 
-  /** Infer Original Plan From The Job Type That Was Generated */
+  /** Infer Original Plan from the Job Type That Was Generated */
   let originalPlan: "free" | "pro" | "ultra" = "free";
   // Map retryable jobs to the minimum plan that could have generated them.
   if (job === "youtubeTimestamps") {

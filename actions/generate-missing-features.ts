@@ -21,18 +21,19 @@ type FeatureName =
   | "keyMoments"
   | "youtubeTimestamps";
 
+const FREE_FEATURES: FeatureName[] = ["summary"];
+const PRO_FEATURES: FeatureName[] = [...FREE_FEATURES, "socialPosts", "titles", "hashtags"];
+const ULTRA_FEATURES: FeatureName[] = [
+  ...PRO_FEATURES,
+  "keyMoments",
+  "youtubeTimestamps",
+  "transcription",
+];
+
 const PLAN_FEATURES: Record<PlanName, FeatureName[]> = {
-  free: ["summary"],
-  pro: ["summary", "socialPosts", "titles", "hashtags"],
-  ultra: [
-    "summary",
-    "socialPosts",
-    "titles",
-    "hashtags",
-    "keyMoments",
-    "youtubeTimestamps",
-    "transcription",
-  ],
+  free: FREE_FEATURES,
+  pro: PRO_FEATURES,
+  ultra: ULTRA_FEATURES,
 };
 
 const FEATURE_TO_JOB_MAP: Record<FeatureName, string | undefined> = {
