@@ -1,9 +1,10 @@
+import { ArrowRight, Calendar, Clock } from "lucide-react";
+import type { Metadata } from "next";
 import Link from "next/link";
-import { Calendar, Clock, ArrowRight } from "lucide-react";
-import { Metadata } from "next";
 import { Header } from "@/components/Header";
 import Footer from "@/components/Home/Footer";
 import { getBlogPosts } from "@/lib/blog";
+import { formatDate } from "@/lib/format";
 
 export const metadata: Metadata = {
   title: "Blog",
@@ -41,11 +42,7 @@ export default async function BlogPage() {
                   </span>
                   <div className="flex items-center gap-1">
                     <Calendar className="h-4 w-4" />
-                    {new Date(post.date).toLocaleDateString(undefined, {
-                      year: "numeric",
-                      month: "long",
-                      day: "numeric",
-                    })}
+                    {formatDate(new Date(post.date))}
                   </div>
                   <div className="flex items-center gap-1">
                     <Clock className="h-4 w-4" />

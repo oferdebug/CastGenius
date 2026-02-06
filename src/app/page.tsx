@@ -1,4 +1,3 @@
-
 import { Header } from "@/components/Header";
 import CtaSection from "@/components/Home/CtaSection";
 import { FAQSection } from "@/components/Home/FAQSection";
@@ -22,5 +21,3 @@ export default function Home() {
     </div>
   );
 }
-
-

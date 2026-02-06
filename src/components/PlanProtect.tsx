@@ -1,6 +1,6 @@
-'use client';
+"use client";
 
-import { ReactNode, useCallback } from "react";
+import { type ReactNode, useCallback } from "react";
 import { usePlan } from "@/hooks/use-plan";
 
 interface PlanProtectProps {
@@ -21,7 +21,7 @@ interface PlanProtectProps {
 
 /**
  * PlanProtect component that mimics Convex Protect API for plan-based conditional rendering
- * 
+ *
  * Usage:
  * ```tsx
  * <PlanProtect
@@ -32,13 +32,20 @@ interface PlanProtectProps {
  * </PlanProtect>
  * ```
  */
-export function PlanProtect({ condition, children, fallback = null }: PlanProtectProps) {
+export function PlanProtect({
+  condition,
+  children,
+  fallback = null,
+}: PlanProtectProps) {
   const { hasPlan } = usePlan();
 
   // Create a has function that matches the Convex Protect API
-  const has = useCallback((planObj: { plan: string }): boolean => {
-    return hasPlan(planObj.plan);
-  }, [hasPlan]);
+  const has = useCallback(
+    (planObj: { plan: string }): boolean => {
+      return hasPlan(planObj.plan);
+    },
+    [hasPlan],
+  );
 
   // Check if condition is met
   const shouldShow = condition(has);
